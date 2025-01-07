@@ -25,7 +25,7 @@ _self_pin = (
 base_requirements = {
     f"acryl-datahub[datahub-rest]{_self_pin}",
     # We require Airflow 2.3.x, since we need the new DAG listener API.
-    "apache-airflow>=2.3.0",
+    "apache-airflow>=2.3.0"
 }
 
 plugins: Dict[str, Set[str]] = {
@@ -108,6 +108,11 @@ integration_test_requirements = {
     "snowflake-connector-python>=2.7.10",
     "virtualenv",  # needed by PythonVirtualenvOperator
     "apache-airflow-providers-sqlite",
+    
+    "pendulum<3.0", #needed for airflow imports, pendulum 3 is not compatible with airflow. remove once latest airflow is on pendulum 3,
+    "pydantic<2.0", #needed for airflow tests, pydantic did braking changes into package in 2.0 incompatible with airflow
+    "Flask-Session<0.6.0",
+    "connexion<3.0"
 }
 per_version_test_requirements = {
     "test-airflow23": {
