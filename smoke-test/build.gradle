@@ -1,7 +1,7 @@
 apply plugin: 'com.github.node-gradle.node'
 
 ext {
-  python_executable = 'python3'
+  python_executable = project.findProperty('python_executable') ?: 'python3'
   venv_name = 'venv'
 }
 

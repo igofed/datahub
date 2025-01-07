@@ -3,7 +3,7 @@ plugins {
 }
 
 ext {
-  python_executable = 'python3'
+  python_executable = project.findProperty('python_executable') ?: 'python3'
 }
 
 task checkPythonVersion(type: Exec) {
